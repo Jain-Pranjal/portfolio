@@ -6,11 +6,14 @@ import Background from '@/components/Background'
 import { DockDemo } from '@/components/Dock'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Volume2 } from 'lucide-react';
+import { Volume2, FileText } from 'lucide-react'
 import Clock from '@/components/Clock'
 import { FootScroll } from '@/components/FootScroll'
 import Projects from '@/components/Projects'
 import Experience from '@/components/Experience'
+import ShimmerButton from '@/components/ui/shimmer-button'
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+
 
 const languages = [
   { lang: 'en-US', text: 'PRANJAL JAIN' },
@@ -35,6 +38,8 @@ const getRandomGradient = () => {
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [gradient, setGradient] = useState(getRandomGradient())
+  const [isOpen, setIsOpen] = useState(false)
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,10 +60,29 @@ export default function Page() {
     <>
       <Background>
         <div className="h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 w-full">
-        <div className="absolute top-0 right-0">
-            <Clock />
-          </div>
-          <AnimatePresence mode="wait">
+        <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-4">
+
+
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogTrigger asChild>
+                <ShimmerButton className="shadow-2xl">
+                  <FileText className="h-4 w-4 m-1" />
+                  Resume
+                </ShimmerButton>
+              </DialogTrigger>
+              <DialogContent className="w-full max-w-4xl h-[80vh]">
+                <iframe 
+                  src="https://drive.google.com/file/d/1kUQT3UtUtGa95VXvmFZQFGR0Gw8QEWbG/preview?usp=sharing" 
+                  className="w-full h-full"
+                  title="Resume"
+                />
+              </DialogContent>
+            </Dialog>
+
+
+          <Clock />
+        </div>
+          <AnimatePresence mode="wait">̀
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, y: 20 }}
