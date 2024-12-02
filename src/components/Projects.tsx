@@ -35,9 +35,9 @@ const Projects = () => {
           className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-6xl md:leading-[5rem]"
           words="Projects"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
           {projects.map((project, index) => (
-            <MagicCard key={index} className="p-6" gradientColor="black" gradientSize={150}>
+            <MagicCard key={index} className="p-6" gradientColor="#43C6AC">
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
               <p className="text-gray-700 mb-4">{project.description}</p>
               <a href={project.link} target="_blank" className="text-blue-500 hover:underline cursor-pointer">
