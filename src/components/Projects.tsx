@@ -33,7 +33,7 @@ const Projects = () => {
       <div className="relative z-10 flex flex-col items-center space-y-6 md:space-y-12">
         <WordPullUp
           className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-6xl md:leading-[5rem]"
-          words="Projects hai mere bahut sare"
+          words="Projects 💻"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-2">
           {projects.map((project, index) => (

@@ -12,22 +12,25 @@ const experiences = [
     company: "Zoth",
     role: "Full Stack Developer",
     period: "Oct 2024 - Present",
-    description: "Developing the frontend of the web applciation and handling the backend servies.",
-    skills: ["React","NextJS", "Node.js", "MongoDB", "AWS"]
-  },
-  {
-      company: "Augsta Infosystems Private Limited",
-      role: "Full Stack Developer",
-      period: "July 2024 - August 2024",
-      description: "Developed a banking platform designed for administrators to efficiently manage employees and onboard new users.",
-      skills: ["ReactJs","NextJs","Vercel", "MongoDB","NodeJs","AWS"]
-    },
-    {
-      company: "Two Point One Inc.",
-      role: "Data Science Intern",
-      period: "July 2023 - August 2023",
-      description: "Developed an Email/SMS classifier to differentiate between spam and legitimate emails/SMS using a comprehensive dataset.",
-      skills: ["JavaScript", "Python", "SQL", "Responsive Design"]
+    description: "Developing the frontend of the web applciation and handling the backend services.",
+    skills: ["React","NextJS", "Node.js", "MongoDB", "AWS"],
+    companyImage: "https://d1l8km4g5s76x5.cloudfront.net/Production/exb_doc/2013/23255/2013_23255_22929_6482.png/fit-in/500x500"
+},
+{
+    company: "Augsta Infosystems Private Limited",
+    role: "Full Stack Developer",
+    period: "July 2024 - August 2024",
+    description: "Developed a banking platform designed for administrators to efficiently manage employees and onboard new users.",
+    skills: ["ReactJs","NextJs","Vercel", "MongoDB","NodeJs","AWS"],
+    companyImage: "https://media.licdn.com/dms/image/v2/D4D22AQENCHPso9cbBg/feedshare-shrink_800/feedshare-shrink_800/0/1704713577039?e=2147483647&v=beta&t=2Op2gf8YMh6ysVEmS6kV9Ck3OBoWyUsebEbERkoJoYA"
+},
+{
+    company: "Two Point One Inc.",
+    role: "Data Science Intern",
+    period: "July 2023 - August 2023",
+    description: "Developed an Email/SMS classifier to differentiate between spam and legitimate emails/SMS using a comprehensive dataset.",
+    skills: ["JavaScript", "Python", "SQL", "Responsive Design"],
+    companyImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq1GhMVrfEwF6MViD2Ceo1eN5sAVeBRAaf4w&s"
     }
 ]
 
@@ -76,11 +79,14 @@ const TerminalExperience = () => {
        <div className="min-h-screen bg-gray-900 text-green-500 p-4 sm:p-8 flex flex-col items-center justify-center font-mono">
       <WordPullUp
         className="text-4xl font-bold tracking-[-0.02em] text-white md:text-6xl md:leading-[5rem] mb-8"
-        words="Experience"
+        words="Experience 🚀"
       />
       <Card className="w-full max-w-4xl bg-black text-green-500 border-green-500">
         <CardContent className="p-6">
-          <ScrollArea className="h-[50vh]">
+        <div className="flex justify-center mb-4">
+            <img src={experiences[currentExperience].companyImage} alt="Company Logo" className="h-52 w-52 object-contain" />
+          </div>
+          <ScrollArea className="h-[40vh]">
             <AnimatePresence mode="popLayout">
               {displayedContent.map((line, index) => (
                   <motion.div

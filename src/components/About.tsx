@@ -6,7 +6,7 @@ import WordPullUp from "@/components/ui/word-pull-up";
 
 const About = () => {
   return (
-    <div className="bg-[#dfffbf] h-screen flex flex-col justify-center items-center relative">
+    <div className="bg-[#09555c] h-screen flex flex-col justify-center items-center relative">
       <RetroGrid className="absolute inset-0 z-0" />
       <div className="relative z-10 flex flex-col items-center space-y-6 md:space-y-12">
         <WordPullUp
@@ -30,14 +30,13 @@ const About = () => {
           <div className="ml-0 md:ml-6 flex-grow text-center md:text-left">
             <h2 className="text-2xl font-bold mb-2">Pranjal Jain</h2>
             <p className="text-gray-700 mb-4">
-              Brief description about yourself. You can include your profession, interests, or any other relevant information.
+            A versatile developer with a strong background in building modern web applications, particularly using Next.js, React, and TypeScript. With expertise in managing databases, implementing complex APIs , I have developed skills in Full stack dvelopment. I am passionate about learning new technologies and frameworks and I am always looking for new challenges. 
             </p>
             <div>
               <h3 className="text-xl font-semibold mb-2">Education</h3>
               <ul className="list-disc list-inside text-gray-700">
-                <li>Bachelor's Degree in Computer Science - XYZ University</li>
-                <li>Master's Degree in Software Engineering - ABC University</li>
-                <li>Other relevant education or certifications</li>
+                <li>Bachelor's Degree in Computer Science - Bharati Vidyapeeth's College of Engineering (2021-2025)
+                </li>
               </ul>
             </div>
           </div>
