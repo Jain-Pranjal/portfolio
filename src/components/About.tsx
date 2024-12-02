@@ -6,7 +6,7 @@ import WordPullUp from "@/components/ui/word-pull-up";
 
 const About = () => {
   return (
-    <div className="h-screen flex flex-col justify-center items-center relative">
+    <div className="bg-[#dfffbf] h-screen flex flex-col justify-center items-center relative">
       <RetroGrid className="absolute inset-0 z-0" />
       <div className="relative z-10 flex flex-col items-center space-y-6 md:space-y-12">
         <WordPullUp

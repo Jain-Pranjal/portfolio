@@ -10,6 +10,7 @@ import { Volume2 } from 'lucide-react';
 import Clock from '@/components/Clock'
 import { FootScroll } from '@/components/FootScroll'
 import Projects from '@/components/Projects'
+import Experience from '@/components/Experience'
 
 const languages = [
   { lang: 'en-US', text: 'PRANJAL JAIN' },
@@ -81,6 +82,7 @@ export default function Page() {
       </Background>
       <About />
       <Projects />
+      <Experience />
       <FootScroll />
       <div className="sticky bottom-4 z-50">
         <DockDemo />
