@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import WordPullUp from '@/components/ui/word-pull-up';
+import Image from 'next/image'
 
 
 const experiences = [
@@ -14,7 +15,7 @@ const experiences = [
     period: "Oct 2024 - Present",
     description: "Developing the frontend of the web applciation and handling the backend services.",
     skills: ["React","NextJS", "Node.js", "MongoDB", "AWS"],
-    companyImage: "https://d1l8km4g5s76x5.cloudfront.net/Production/exb_doc/2013/23255/2013_23255_22929_6482.png/fit-in/500x500"
+    companyImage: "/zoth.png"
 },
 {
     company: "Augsta Infosystems Private Limited",
@@ -22,7 +23,7 @@ const experiences = [
     period: "July 2024 - August 2024",
     description: "Developed a banking platform designed for administrators to efficiently manage employees and onboard new users.",
     skills: ["ReactJs","NextJs","Vercel", "MongoDB","NodeJs","AWS"],
-    companyImage: "https://media.licdn.com/dms/image/v2/D4D22AQENCHPso9cbBg/feedshare-shrink_800/feedshare-shrink_800/0/1704713577039?e=2147483647&v=beta&t=2Op2gf8YMh6ysVEmS6kV9Ck3OBoWyUsebEbERkoJoYA"
+    companyImage: "/augsta.jpeg"
 },
 {
     company: "Two Point One Inc.",
@@ -30,7 +31,7 @@ const experiences = [
     period: "July 2023 - August 2023",
     description: "Developed an Email/SMS classifier to differentiate between spam and legitimate emails/SMS using a comprehensive dataset.",
     skills: ["JavaScript", "Python", "SQL", "Responsive Design"],
-    companyImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq1GhMVrfEwF6MViD2Ceo1eN5sAVeBRAaf4w&s"
+    companyImage: "/twoPointOne.png"
     }
 ]
 
@@ -43,6 +44,7 @@ const TerminalExperience = () => {
     setDisplayedContent([])
     const experience = experiences[currentExperience]
     const content = [
+        
       `>`,
       `Company: ${experience.company}`,
       `Role: ${experience.role}`,
@@ -83,20 +85,27 @@ const TerminalExperience = () => {
       />
       <Card className="w-full max-w-4xl bg-black text-green-500 border-green-500">
         <CardContent className="p-6">
-        <div className="flex justify-center mb-4">
-            <img src={experiences[currentExperience].companyImage} alt="Company Logo" className="h-52 w-52 object-contain" />
-          </div>
-          <ScrollArea className="h-[40vh]">
+          <ScrollArea className="h-[60vh] sm:h-[50vh]">
             <AnimatePresence mode="popLayout">
+              <motion.div
+                key={experiences[currentExperience].companyImage}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="flex justify-center mb-4"
+              >
+                <Image src={experiences[currentExperience].companyImage} alt="Company Logo" className="bject-contain" height={150} width={150} />
+              </motion.div>
               {displayedContent.map((line, index) => (
-                  <motion.div
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2 }}
                   className="mb-3"
-                  >
+                >
                   {line}
                 </motion.div>
               ))}
@@ -107,15 +116,15 @@ const TerminalExperience = () => {
             <input
               ref={inputRef}
               type="text"
-              className="flex-grow bg-transparent border-none outline-none text-green-500  h-12"
+              className="flex-grow bg-transparent border-none outline-none text-green-500 h-12"
               placeholder="Type 'next' or 'prev'"
               onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                      handleCommand(e.currentTarget.value);
-                      e.currentTarget.value = '';
-                    }
-                }}
-                />
+                if (e.key === 'Enter') {
+                  handleCommand(e.currentTarget.value);
+                  e.currentTarget.value = '';
+                }
+              }}
+            />
           </div>
         </CardContent>
       </Card>

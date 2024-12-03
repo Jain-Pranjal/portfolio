@@ -35,7 +35,7 @@ const About = () => {
             <div>
               <h3 className="text-xl font-semibold mb-2">Education</h3>
               <ul className="list-disc list-inside text-gray-700">
-                <li>Bachelor's Degree in Computer Science - Bharati Vidyapeeth's College of Engineering (2021-2025)
+                <li>Bachelor&apos;s Degree in Computer Science - Bharati Vidyapeeth&apos;s College of Engineering (2021-2025)
                 </li>
               </ul>
             </div>
