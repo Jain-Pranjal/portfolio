@@ -35,27 +35,29 @@ const getRandomGradient = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-export default function Page() {
+
+
+const Page = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [gradient, setGradient] = useState(getRandomGradient())
   const [isOpen, setIsOpen] = useState(false)
-
-
+  
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % languages.length)
       setGradient(getRandomGradient())
     }, 3000) // Change language every 3 seconds
-
+    
     return () => clearInterval(interval)
   }, [])
-
+  
   const speakName = (text: string, lang: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang; // Use the specified language for pronunciation
     speechSynthesis.speak(utterance);
   }
-
+  
   return (
     <>
       <Background>
@@ -72,10 +74,10 @@ export default function Page() {
               </DialogTrigger>
               <DialogContent className="w-full max-w-4xl h-[80vh]">
                 <iframe 
-                  src="https://drive.google.com/file/d/1kUQT3UtUtGa95VXvmFZQFGR0Gw8QEWbG/preview?usp=sharing" 
+                  src="https://drive.google.com/file/d/1Db2xJ0J7xbiw-Smf9QrvQw-jblvC0-3f/view?usp=sharing" 
                   className="w-full h-full"
                   title="Resume"
-                />
+                  />
               </DialogContent>
             </Dialog>
 
@@ -90,13 +92,14 @@ export default function Page() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               className={`text-center bg-clip-text text-transparent bg-gradient-to-r ${gradient} break-words py-4 relative`}
-            >
+              >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 break-words ">
                 {languages[currentIndex].text}
                 <button
+                id="volume-button"
                   onClick={() => speakName(languages[currentIndex].text, languages[currentIndex].lang)}
                   className="absolute right-0 top-0 mt-2 ml-4 sm:ml-8" // Added responsive margin-left to create a gap
-                >
+                  >
                   <Volume2 className="h-6 w-6 text-gray-700 hover:text-gray-900" />
                 </button>
               </h1>
@@ -114,3 +117,4 @@ export default function Page() {
     </>
   )
 }
+export default Page
