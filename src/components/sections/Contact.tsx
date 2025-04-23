@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-
+import { Github } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+import { Twitter } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -21,7 +24,7 @@ export function ContactSection() {
   };
 
   return (
-    <div className="space-y-6 max-w-3xl pl-4 pt-10">
+    <div className="space-y-6 max-w-4xl pl-4 py-10">
       <h1 className="text-3xl font-bold text-notes-text mb-6 border-b border-notes-border pb-2">
         Contact Me
       </h1>
@@ -35,7 +38,7 @@ export function ContactSection() {
               <Mail className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Email</h3>
-                <p className="text-notes-muted">hello@example.com</p>
+                <p className="text-notes-muted">pranjalworkon@gmail.com</p>
               </div>
             </div>
             
@@ -43,7 +46,7 @@ export function ContactSection() {
               <Phone className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Phone</h3>
-                <p className="text-notes-muted">+1 (555) 123-4567</p>
+                <p className="text-notes-muted">+91-9999284260</p>
               </div>
             </div>
             
@@ -51,7 +54,7 @@ export function ContactSection() {
               <MapPin className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Location</h3>
-                <p className="text-notes-muted">San Francisco, CA</p>
+                <p className="text-notes-muted">New Delhi, India</p>
               </div>
             </div>
           </div>
@@ -59,19 +62,18 @@ export function ContactSection() {
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-notes-text mb-4">Follow Me</h2>
             <div className="flex space-x-4">
-              {/* Social media icons would go here */}
-              <div className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
-                <span className="text-notes-text">1</span>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
-                <span className="text-notes-text">2</span>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
-                <span className="text-notes-text">3</span>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
-                <span className="text-notes-text">4</span>
-              </div>
+              <a href="https://github.com/Jain-Pranjal" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
+              <Github className="h-5 w-5 text-notes-text" />
+              </a>
+              <a href="https://www.linkedin.com/in/pranjalll/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
+              <Linkedin className="h-5 w-5 text-notes-text" />
+              </a>
+              <a href="https://x.com/PranjalJain03" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
+              <Twitter className="h-5 w-5 text-notes-text" />
+              </a>
+              <a href="https://www.instagram.com/pranjalll_jain/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center cursor-pointer hover:bg-notes-sidebarActive">
+              <Instagram className="h-5 w-5 text-notes-text" />
+              </a>
             </div>
           </div>
         </div>
