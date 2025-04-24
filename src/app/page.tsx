@@ -1,120 +1,90 @@
+"use client";
+import { useState } from "react";
+import { NoteSidebar } from "@/components/Sidebar";
+import { AboutSection } from "@/components/sections/About";
+import { EducationSection } from "@/components/sections/Education";
+import { SkillsSection } from "@/components/sections/Skills";
+import { ContactSection } from "@/components/sections/Contact";
+import { ExperienceSection } from "@/components/sections/Experience";
+import { ProjectsSection } from "@/components/sections/Projects";
+import { TransitionWrapper } from "@/app/TransitionWrapper";
+import { useIsMobile } from "@/components/global/useMobile";
+import { MacWindowBar } from "@/components/global/WindowBar";
 
-'use client'
+type SectionType = "about" | "education" | "skills" | "contact" | "experience" | "projects";
+type ActiveTarget = SectionType | string;
 
-import About from '@/components/About'
-import Background from '@/components/Background'
-import { DockDemo } from '@/components/Dock'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { Volume2, FileText } from 'lucide-react'
-import Clock from '@/components/Clock'
-import { FootScroll } from '@/components/FootScroll'
-import Projects from '@/components/Projects'
-import Experience from '@/components/Experience'
-import ShimmerButton from '@/components/ui/shimmer-button'
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+export default function PortfolioLayout() {
+  const [activeSection, setActiveSection] = useState<ActiveTarget>("about");
+  const [notes, setNotes] = useState<{ id: string; content: string }[]>([]);
+  const isMobile = useIsMobile();
 
+  const renderSection = () => {
+    if (["about", "education", "skills", "contact", "experience", "projects"].includes(activeSection)) {
+      switch (activeSection) {
+        case "about": return <AboutSection />;
+        case "education": return <EducationSection />;
+        case "skills": return <SkillsSection />;
+        case "contact": return <ContactSection />;
+        case "experience": return <ExperienceSection />;
+        case "projects": return <ProjectsSection />;
+      }
+    }
 
-const languages = [
-  { lang: 'en-US', text: 'PRANJAL JAIN' },
-  { lang: 'hi-IN', text: 'प्रांजल जैन' },
-  { lang: 'ja-JP', text: 'プランジャル・ジャイン' },
-  { lang: 'ur-PK', text: 'پرانجل جین' }
-];
+    // If not a known section → it's a note
+    const selectedNote = notes.find(n => n.id === activeSection);
 
-const getRandomGradient = () => {
-  const colors = [
-    'from-gray-700 to-gray-900',
-    'from-blue-700 to-blue-900',
-    'from-purple-700 to-purple-900',
-    'from-green-700 to-green-900',
-    'from-red-700 to-red-900',
-    'from-indigo-700 to-indigo-900',
-    'from-yellow-700 to-yellow-900',
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
-};
-
-
-
-const Page = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [gradient, setGradient] = useState(getRandomGradient())
-  const [isOpen, setIsOpen] = useState(false)
-  
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % languages.length)
-      setGradient(getRandomGradient())
-    }, 3000) // Change language every 3 seconds
-    
-    return () => clearInterval(interval)
-  }, [])
-  
-  const speakName = (text: string, lang: string) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang; // Use the specified language for pronunciation
-    speechSynthesis.speak(utterance);
+    return (
+      <div className="w-full h-screen flex">
+        <textarea
+          className="w-full h-full p-10 bg-transparent outline-none resize-none text-xl leading-relaxed text-notes-text"
+          placeholder="Start typing your note..."
+          value={selectedNote?.content || ""}
+          onChange={(e) =>
+            setNotes(prev =>
+              prev.map(n =>
+                n.id === activeSection ? { ...n, content: e.target.value } : n
+              )
+            )
+          }
+        />
+      </div>
+    );
   }
   
+  
+
+  const handleNewNote = (id: string) => {
+    setNotes(prev => [{ id, content: "" }, ...prev]);
+  };
+  const handleDeleteNote = (id: string) => {
+    setNotes(prev => prev.filter(n => n.id !== id));
+  };
+  
+  
+
   return (
-    <>
-      <Background>
-        <div className="h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 w-full">
-        <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-4">
+    <div className="h-screen w-screen overflow-hidden bg-[#232324]">
+      <header className="fixed w-full z-40 top-0 left-0">
+        <MacWindowBar />
+      </header>
 
-
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-              <DialogTrigger asChild>
-                <ShimmerButton className="shadow-2xl">
-                  <FileText className="h-4 w-4 m-1" />
-                  Resume
-                </ShimmerButton>
-              </DialogTrigger>
-              <DialogContent className="w-full max-w-4xl h-[80vh]">
-                <iframe 
-                  src="https://drive.google.com/file/d/1Db2xJ0J7xbiw-Smf9QrvQw-jblvC0-3f/view?usp=sharing" 
-                  className="w-full h-full"
-                  title="Resume"
-                  />
-              </DialogContent>
-            </Dialog>
-
-
-          <Clock />
-        </div>
-          <AnimatePresence mode="wait">̀
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className={`text-center bg-clip-text text-transparent bg-gradient-to-r ${gradient} break-words py-4 relative`}
-              >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 break-words ">
-                {languages[currentIndex].text}
-                <button
-                id="volume-button"
-                  onClick={() => speakName(languages[currentIndex].text, languages[currentIndex].lang)}
-                  className="absolute right-0 top-0 mt-2 ml-4 sm:ml-8" // Added responsive margin-left to create a gap
-                  >
-                  <Volume2 className="h-6 w-6 text-gray-700 hover:text-gray-900" />
-                </button>
-              </h1>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </Background>
-      <About />
-      <Projects />
-      <Experience />
-      <FootScroll />
-      <div className="sticky bottom-4 z-50">
-        <DockDemo />
+      <div className="flex pt-8 h-full">
+        <NoteSidebar
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          onNewNote={handleNewNote}
+          notes={notes}
+          onDeleteNote={handleDeleteNote}
+          
+          
+        />
+        <main className={`flex-1 overflow-y-auto h-full ${isMobile ? "pt-16" : ""}`}>
+          <div className="relative w-full h-full px-0 bg-[#232324]">
+            <TransitionWrapper delay={40}>{renderSection()}</TransitionWrapper>
+          </div>
+        </main>
       </div>
-    </>
-  )
+    </div>
+  );
 }
-export default Page
