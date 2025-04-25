@@ -1,7 +1,7 @@
 export function AboutSection() {
   return (
-    <div className="flex flex-row justify-between items-start max-w-5xl pl-4 pr-8 py-10 gap-10 ">
-      <div className="space-y-10 max-w-4xl ">
+    <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-6 max-w-4xl px-4 py-10 gap-10">
+      <div className="space-y-10 max-w-4xl">
         <h1 className="text-3xl font-bold text-notes-text mb-6 border-b border-notes-border pb-2">
           About Me
         </h1>
@@ -32,11 +32,9 @@ export function AboutSection() {
         </div>
       </div>
 
-
-     
       {/* Profile Image + Signature */}
-      <div className="flex flex-col items-center gap-4 mt-16">
-        <div className="w-64 h-64 rounded-full overflow-hidden border-2 border-notes-border shadow-sm select-none">
+      <div className="flex flex-col items-center gap-4 lg:mt-16">
+        <div className="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-notes-border shadow-sm select-none">
           <img
             src="/profile.jpeg"
             alt="Profile picture"
@@ -44,21 +42,7 @@ export function AboutSection() {
             draggable="false"
           />
         </div>
-
-        {/* Animated Signature
-        <svg
-          viewBox="0 0 200 60"
-          className="w-40 h-12 stroke-[2px] stroke-notes-accent fill-transparent animate-signature"
-        >
-          <path
-            d="M10,30 C30,10 40,40 60,30 S90,30 100,40 S130,10 150,30"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg> */}
       </div>
     </div>
   );
 }
-
-

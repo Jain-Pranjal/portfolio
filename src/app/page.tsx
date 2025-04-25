@@ -88,10 +88,10 @@ export default function PortfolioLayout() {
           notes={notes}
           onDeleteNote={handleDeleteNote}
         />
-        <main className={`flex-1 overflow-y-auto h-full ${isMobile ? "pt-16" : ""}`}>
-          <div className="relative w-full h-full px-0 bg-[#232324]">
+        <main className={`flex-1 overflow-y-auto h-full ${isMobile ? "pt-12" : ""}`}>
+          {/* <div className="relative w-full h-full px-0 bg-[#232324]"> */}
             <TransitionWrapper delay={40}>{renderSection()}</TransitionWrapper>
-          </div>
+          {/* </div> */}
         </main>
       </div>
     </div>
