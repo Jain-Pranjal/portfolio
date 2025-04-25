@@ -1,6 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { CirclePlus, Trash, User, GraduationCap, Code, Briefcase, FolderGit2, Mail, FileText } from "lucide-react";
+import {
+  CirclePlus,
+  Trash,
+  User,
+  GraduationCap,
+  Code,
+  Briefcase,
+  FolderGit2,
+  Mail,
+  FileText,
+} from "lucide-react";
 
 type SectionType =
   | "about"
@@ -74,7 +84,13 @@ export function NoteSidebar({
   const [sidebarWidth, setSidebarWidth] = useState<number>(300);
   const isResizing = useRef(false);
 
-  // Handle resizing for desktop
+  const handleSectionSelect = (id: ActiveTarget) => {
+    setActiveSection(id);
+    // Scroll the main content to top
+    const mainElement = document.querySelector("main");
+    mainElement?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isResizing.current) return;
@@ -97,45 +113,28 @@ export function NoteSidebar({
 
   const handleNewNote = () => {
     const id = Date.now().toString();
-    onNewNote(id); // Add to state in parent
-    setActiveSection(id); // Activate the blank note
+    onNewNote(id);
+    handleSectionSelect(id);
   };
 
-  // Determine if we're on mobile
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
-    // Initial check
+
     checkMobile();
-    
-    // Listen for resize events
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
     <div className="flex h-screen">
-      <aside
-        className={cn(
-          "border-r border-[#222325] flex flex-col select-none bg-[#202021]",
-          isMobile ? "w-[70px]" : ""
-        )}
-        style={
-          !isMobile
-            ? {
-                width: `${sidebarWidth}px`,
-                minWidth: "200px",
-                maxWidth: "500px",
-              }
-            : {}
-        }
-      >
+      <aside className={cn(
+    "flex flex-col select-none bg-[#202021] border-r border-[#222325]",
+    "w-[70px] md:w-[300px] md:min-w-[200px] md:max-w-[500px]")}>
         <nav className="flex-1 px-0 pt-10">
-          {/* New Note */}
           <div className={cn("px-3 mb-2", isMobile && "px-1")}>
             <div
               className={cn(
@@ -169,7 +168,6 @@ export function NoteSidebar({
             </div>
           </div>
 
-          {/* App Sections */}
           <ul className={cn("space-y-1", isMobile ? "px-1" : "px-2")}>
             {notesMock.map((note) => (
               <li
@@ -181,21 +179,19 @@ export function NoteSidebar({
                     ? "text-white"
                     : "hover:bg-[#262728]"
                 )}
-                onClick={() => setActiveSection(note.id)}
+                onClick={() => handleSectionSelect(note.id)}
                 style={
                   activeSection === note.id
                     ? { backgroundColor: "rgb(157, 132, 59)" }
                     : {}
                 }
               >
-                {/* Icon only visible on mobile */}
                 {isMobile && (
                   <div className="flex items-center justify-center mx-auto">
                     {note.icon}
                   </div>
                 )}
 
-                {/* Text content only visible on larger screens */}
                 {!isMobile && (
                   <div className="flex-grow">
                     <div className="flex justify-between">
@@ -212,7 +208,6 @@ export function NoteSidebar({
               </li>
             ))}
 
-            {/* User-created notes */}
             {notes.map((note) => (
               <li
                 key={note.id}
@@ -229,12 +224,10 @@ export function NoteSidebar({
                     : {}
                 }
               >
-                {/* Clickable note body */}
-                <div 
-                  className="flex items-center w-full" 
-                  onClick={() => setActiveSection(note.id)}
+                <div
+                  className="flex items-center w-full"
+                  onClick={() => handleSectionSelect(note.id)}
                 >
-                  {/* Document icon for notes - only on mobile */}
                   {isMobile ? (
                     <div className="mx-auto">
                       <FileText className="w-5 h-5" />
@@ -251,18 +244,17 @@ export function NoteSidebar({
                   )}
                 </div>
 
-                {/* Delete button */}
                 <button
                   onClick={(e) => {
-                    e.stopPropagation(); // prevent selecting the note
+                    e.stopPropagation();
                     const isActive = activeSection === note.id;
                     onDeleteNote(note.id);
-                    if (isActive) setActiveSection("about"); // fallback
+                    if (isActive) handleSectionSelect("about");
                   }}
                   className={cn(
                     "text-sm text-gray-400 hover:text-red-500",
-                    isMobile 
-                      ? "absolute -top-1 -right-1 bg-[#313234] rounded-full p-1" 
+                    isMobile
+                      ? "absolute -top-1 -right-1 bg-[#313234] rounded-full p-1"
                       : "opacity-0 group-hover:opacity-100 transition-opacity ml-2"
                   )}
                   aria-label="Delete note"
@@ -275,7 +267,6 @@ export function NoteSidebar({
         </nav>
       </aside>
 
-      {/* Only show resize handle on desktop */}
       {!isMobile && (
         <div
           className="w-1 bg-[#333] hover:bg-[#555] cursor-col-resize"
