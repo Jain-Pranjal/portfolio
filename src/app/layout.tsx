@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {Poppins,DM_Serif_Text} from 'next/font/google'
+
 
 
 export const metadata: Metadata = {

@@ -1,4 +1,3 @@
-
 "use client";
 import { useState, useEffect } from "react";
 import { NoteSidebar } from "@/components/Sidebar";
@@ -17,20 +16,11 @@ type ActiveTarget = SectionType | string;
 export default function PortfolioLayout() {
   const [activeSection, setActiveSection] = useState<ActiveTarget>("about");
   const [notes, setNotes] = useState<{ id: string; content: string }[]>([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Handle responsive behavior directly
+  // Set mounted status after initial render to prevent hydration mismatch
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Initial check
-    checkMobile();
-    
-    // Listen for resize events
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    setMounted(true);
   }, []);
 
   const renderSection = () => {
@@ -74,6 +64,17 @@ export default function PortfolioLayout() {
     setNotes(prev => prev.filter(n => n.id !== id));
   };
 
+  // Don't render until we're client-side to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="h-screen w-screen overflow-hidden bg-[#232324]">
+        <header className="fixed w-full z-40 top-0 left-0">
+          <MacWindowBar />
+        </header>
+      </div>
+    );
+  }
+
   return (
     <div className="h-screen w-screen overflow-hidden bg-[#232324]">
       <header className="fixed w-full z-40 top-0 left-0">
@@ -88,10 +89,8 @@ export default function PortfolioLayout() {
           notes={notes}
           onDeleteNote={handleDeleteNote}
         />
-        <main className={`flex-1 overflow-y-auto h-full ${isMobile ? "pt-12" : ""}`}>
-          {/* <div className="relative w-full h-full px-0 bg-[#232324]"> */}
-            <TransitionWrapper delay={40}>{renderSection()}</TransitionWrapper>
-          {/* </div> */}
+        <main className="flex-1 overflow-y-auto h-full pt-12 md:pt-0">
+          <TransitionWrapper delay={40}>{renderSection()}</TransitionWrapper>
         </main>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 export function AboutSection() {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-6 max-w-4xl px-4 py-10 gap-10">
@@ -18,8 +19,8 @@ export function AboutSection() {
           </p>
 
           <p className="text-notes-text mt-4">
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-            or enjoying listening to music. I'm always eager to take on new challenges and collaborate with passionate teams 
+            When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, 
+            or enjoying listening to music. I&apos;m always eager to take on new challenges and collaborate with passionate teams 
             to build innovative solutions.
           </p>
         </div>
@@ -27,7 +28,7 @@ export function AboutSection() {
         <div className="mt-8">
           <h2 className="text-xl font-semibold text-notes-text mb-4">My Philosophy</h2>
           <blockquote className="border-l-4 border-notes-accent pl-4 italic text-notes-text">
-            "I believe that technology should be a tool for empowerment, enabling individuals and communities to achieve their goals and dreams."
+          &quot;I believe that technology should be a tool for empowerment, enabling individuals and communities to achieve their goals and dreams.&quot;
           </blockquote>
         </div>
       </div>
@@ -35,11 +36,13 @@ export function AboutSection() {
       {/* Profile Image + Signature */}
       <div className="flex flex-col items-center gap-4 lg:mt-16">
         <div className="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-notes-border shadow-sm select-none">
-          <img
+          <Image
             src="/profile.jpeg"
             alt="Profile picture"
+            width={256}
+            height={256}
             className="w-full h-full object-cover"
-            draggable="false"
+            draggable={false}
           />
         </div>
       </div>
