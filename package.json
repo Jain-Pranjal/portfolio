@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "rebase": "git pull && git checkout master && git pull && git rebase dev && git push && git checkout dev"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
