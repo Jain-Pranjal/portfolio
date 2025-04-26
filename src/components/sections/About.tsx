@@ -28,7 +28,7 @@ export function AboutSection() {
         <div className="mt-8">
           <h2 className="text-xl font-semibold text-notes-text mb-4">My Philosophy</h2>
           <blockquote className="border-l-4 border-notes-accent pl-4 italic text-notes-text">
-          &quot;I believe that technology should be a tool for empowerment, enabling individuals and communities to achieve their goals and dreams.&quot;
+          &quot;There&apos;s no place like 127.0.0.1..&quot;
           </blockquote>
         </div>
       </div>

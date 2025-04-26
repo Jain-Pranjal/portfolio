@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from "lucide-react";
-
+import Image from "next/image";
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -74,6 +74,15 @@ export function ContactSection() {
               </a>
             </div>
           </div>
+
+          <Image
+          src="/signature.png"
+          alt="Signature"
+          width={256}
+          height={256}
+          className="w-52  lg:w-72 object-contain"
+          draggable={false}
+        />
         </div>
 
         {/* Contact Form */}
