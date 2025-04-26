@@ -39,8 +39,8 @@ export function EducationSection() {
             <h2 className="text-xl font-semibold text-notes-text">{item.degree}</h2>
             <span className="text-notes-accent">{item.year}</span>
             </div>
-            <p className="text-notes-muted">{item.institution}</p>
-            <p className="text-notes-muted">CGPA: {item.CGPA}</p>
+            <p className="text-notes-text opacity-75">{item.institution}</p>
+            <p className="text-notes-text opacity-75">CGPA: {item.CGPA}</p>
             <p className="text-notes-text">{item.description}</p>
           </div>
           </div>
