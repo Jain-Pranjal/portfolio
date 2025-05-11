@@ -4,6 +4,11 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
+    title: "Mona - AI extension",
+    description: "Mona is an AI extension in VS code that helps you to write code faster and better. It gives you the suggestion based on the code and prompt you write.",
+    link: "https://github.com/Jain-Pranjal/Mona"
+  },
+  {
     title: "Calenzo",
     description: "A sophisticated calendar and scheduling platform featuring real-time collaboration, intelligent event management, and seamless third-party integrations. Built with modern web technologies focusing on user experience and productivity.",
     link: "https://github.com/Jain-Pranjal/Calenzo"
