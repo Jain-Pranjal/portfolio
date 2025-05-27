@@ -9,26 +9,24 @@ export function AboutSection() {
 
         <div className="prose prose-invert max-w-none">
           <p className="text-notes-text">
-            Hello! Myself<strong> Pranjal Jain</strong>, a passionate developer with a keen eye for design and a love for creating seamless user experiences. 
+            Hello! Myself<strong> Pranjal Jain</strong>, a passionate full-stack developer with a keen eye for design and a focus on building scalable web applications using modern frameworks.
             My journey in the tech world started when I first discovered the power of turning ideas into reality through code.
           </p>
 
-          <p className="text-notes-text mt-4">
-            I specialize in front-end development, with expertise in React, NextJS, TypeScript, and modern CSS frameworks. 
-            I believe in writing clean, maintainable code that scales well and provides an excellent foundation for future development.
-          </p>
+         <p className="text-notes-text mt-4">
+  I specialize in <strong>full-stack development</strong>, with strong expertise in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and modern <strong>CSS frameworks</strong> like Tailwind CSS on the front end. On the back end, I work with <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Django</strong> to build robust, scalable APIs and server-side logic. I focus on writing <strong>clean, maintainable, and scalable code</strong> that supports long-term growth and flexibility.
+</p>
 
-          <p className="text-notes-text mt-4">
-            When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, 
-            or enjoying listening to music. I&apos;m always eager to take on new challenges and collaborate with passionate teams 
-            to build innovative solutions.
-          </p>
+<p className="text-notes-text mt-4">
+  When I&apos;m not coding, I enjoy <strong>exploring new technologies</strong>, <strong>contributing to open-source projects</strong>, and listening to music. I&apos;m always eager to tackle <strong>new challenges</strong> and collaborate with <strong>passionate teams</strong> to build <strong>innovative, user-centric solutions</strong>.
+</p>
+
         </div>
 
         <div className="mt-8">
           <h2 className="text-xl font-semibold text-notes-text mb-4">My Philosophy</h2>
           <blockquote className="border-l-4 border-notes-accent pl-4 italic text-notes-text">
-          &quot;There&apos;s no place like 127.0.0.1..&quot;
+          &quot;There&apos;s no place like 127.0.0.1.&quot;
           </blockquote>
         </div>
       </div>

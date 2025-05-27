@@ -8,7 +8,8 @@ const experienceData = [
       "Designed, developed, and deployed the Zoth Airdrop Checker",
       "Created and maintained comprehensive test cases for front-end, back-end, and APIs to ensure system reliability",
       "Implemented performance testing capabilities using Google Lighthouse",
-      "Implemented 100+ automation test flows using Jest, enhancing testing efficiency and reducing manual effort"
+      "Implemented 100+ automation test flows using Jest and Playwright, enhancing testing efficiency and reducing manual effort",
+      "Resolved the issue of the SonarQube report"
     ]
   },
   {

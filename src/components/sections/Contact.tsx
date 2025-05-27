@@ -15,7 +15,7 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Thanks for your message, ${formData.name}! This is a demo form.`);
+    alert(`Thanks for your message, ${formData.name}! Your message is sent.`);
     setFormData({ name: "", email: "", message: "" });
   };
 

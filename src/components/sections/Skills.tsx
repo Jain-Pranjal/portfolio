@@ -1,4 +1,6 @@
-import { SiReact, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiGraphql, SiGit, SiDocker, SiFigma, SiGooglechrome, SiC, SiCplusplus, SiPython, SiNextdotjs, SiPostgresql, SiPostman, SiJira, SiSupabase, SiPrisma, SiDjango, SiGithub } from "react-icons/si";
+import { SiReact, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiGraphql, SiGit, SiDocker, SiFigma, SiGooglechrome, SiC, SiCplusplus, SiPython, SiNextdotjs, SiPostgresql, SiPostman, SiJira, SiSupabase, SiPrisma, SiDjango, SiGithub} from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+
 
 export function SkillsSection() {
   const skillCategories = [
@@ -52,6 +54,7 @@ export function SkillsSection() {
         { name: "Postman", icon: SiPostman },
         { name: "Jira", icon: SiJira },
         { name: "Performance", icon: SiGooglechrome },
+        { name: "AWS", icon: FaAws },
       ],
     },
   ];
