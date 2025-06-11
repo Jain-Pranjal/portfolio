@@ -7,11 +7,12 @@ import { SkillsSection } from "@/components/sections/Skills";
 import { ContactSection } from "@/components/sections/Contact";
 import { ExperienceSection } from "@/components/sections/Experience";
 import { ProjectsSection } from "@/components/sections/Projects";
+import {BlogSection} from "@/components/sections/Blog";
 import { TransitionWrapper } from "@/app/TransitionWrapper";
 import { MacWindowBar } from "@/components/global/WindowBar";
+import { ActiveTarget} from "@/types/section";
 
-type SectionType = "about" | "education" | "skills" | "contact" | "experience" | "projects";
-type ActiveTarget = SectionType | string;
+
 
 export default function PortfolioLayout() {
   const [activeSection, setActiveSection] = useState<ActiveTarget>("about");
@@ -24,7 +25,7 @@ export default function PortfolioLayout() {
   }, []);
 
   const renderSection = () => {
-    if (["about", "education", "skills", "contact", "experience", "projects"].includes(activeSection)) {
+    if (["about", "education", "skills", "contact", "experience", "projects", "blog"].includes(activeSection)) {
       switch (activeSection) {
         case "about": return <AboutSection />;
         case "education": return <EducationSection />;
@@ -32,6 +33,7 @@ export default function PortfolioLayout() {
         case "contact": return <ContactSection />;
         case "experience": return <ExperienceSection />;
         case "projects": return <ProjectsSection />;
+        case "blog": return <BlogSection />;
       }
     }
 

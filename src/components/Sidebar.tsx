@@ -1,6 +1,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { ActiveTarget } from "@/types/section";
 import {
   CirclePlus,
   Trash,
@@ -10,17 +11,11 @@ import {
   Briefcase,
   FolderGit2,
   Mail,
+  Newspaper,
   FileText,
 } from "lucide-react";
 
-type SectionType =
-  | "about"
-  | "education"
-  | "skills"
-  | "contact"
-  | "experience"
-  | "projects";
-type ActiveTarget = SectionType | string;
+
 
 interface SidebarProps {
   activeSection: ActiveTarget;
@@ -65,6 +60,13 @@ const notesMock = [
     info: "My work",
     desc: "Showcase of my projects",
     icon: <FolderGit2 className="w-5 h-5" />,
+  },
+  {
+    id: "blog",
+    label: "Blogs",
+    info: "Read my thoughts",
+    desc: "Articles & insights",
+    icon: <Newspaper className="w-5 h-5" />,
   },
   {
     id: "contact",
