@@ -99,29 +99,22 @@ export const experienceContent = [
 export const blogContent = [
     {
         id: "blog1",
-        title: "Getting Started with React",
-        description: "A beginner's guide to React framework",
+        title: "Using postgreSQL in Docker Container",
+        description: "A beginner's guide to using postgreSQL in a Docker container",
         link: "https://medium.com/@basit26374/how-to-run-postgresql-in-docker-container-with-volume-bound-c141f94e4c5a",
-        tag: "web2",
+        tag: "Docker",
         datePublished: "2023-05-15",
         image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b5UBEuktS0lhRoit39GtGw.jpeg"
     },
+   
     {
         id: "blog2",
-        title: "Understanding TypeScript",
-        description: "Deep dive into TypeScript features",
-        link: "https://example.com/blog2",
-        tag: "javascript",
-        datePublished: "2023-06-22",
-        image: "https://via.placeholder.com/300x200"
-    },
-    {
-        id: "blog3",
-        title: "Web3 Development Basics",
-        description: "Introduction to blockchain development",
-        link: "https://example.com/blog3",
-        tag: "web3",
+        title: "Top Linux commands for beginners",
+        description: "A beginner's guide to essential Linux commands",
+        link: "https://medium.com/@pranjalll/top-8-linux-commands-everyone-should-know-656399eb7d3f",
+        tag: "Web2",
         datePublished: "2023-07-10",
-        image: "https://via.placeholder.com/300x200"
+        image: "https://images.ctfassets.net/lzny33ho1g45/UWH9IWnkrHogTs50L5FM8/85b518e7aedd196d2b6b541d0f90c7fb/Linux.jpg?w=1520&fm=jpg&q=31&fit=thumb&h=760"
     },
 ];
+

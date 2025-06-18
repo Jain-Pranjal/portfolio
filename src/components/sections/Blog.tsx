@@ -51,7 +51,8 @@ export function BlogSection() {
                                     <img 
                                         src={blog.image} 
                                         alt={blog.title} 
-                                        className="w-full h-40 object-cover rounded-md"
+                                        className="w-full h-40 object-cover rounded-md select-none"
+                                        draggable="false"
                                     />
                                 )}
                                 <div>
