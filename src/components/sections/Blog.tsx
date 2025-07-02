@@ -47,9 +47,9 @@ export function BlogSection() {
                             className="bg-notes-sidebarHover p-6 rounded-lg border border-notes-border hover:border-notes-accent transition-colors duration-200 no-underline"
                         >
                             <div className="flex flex-col space-y-4">
-                                {blog.image && (
+                                {blog.id && (
                                     <Image
-                                        src={blog.image}
+                                        src={blog.imageLink}
                                         alt={blog.title}
                                         className="w-full h-40 object-cover rounded-md select-none"
                                         draggable="false"

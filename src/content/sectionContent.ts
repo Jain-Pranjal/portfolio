@@ -62,7 +62,7 @@ export const projectsContent = [
 
 export const experienceContent = [
   {
-    title: "Full Stack Developer",
+    title: "Full Stack Web3 Developer",
     company: "Zoth",
     period: "Oct 2024 - Present",
     responsibilities: [
@@ -97,15 +97,15 @@ export const experienceContent = [
 ];
 
 export const blogContent = [
-    {
-        id: "blog1",
-        title: "Using postgreSQL in Docker Container",
-        description: "A beginner's guide to using postgreSQL in a Docker container",
-        link: "https://medium.com/@basit26374/how-to-run-postgresql-in-docker-container-with-volume-bound-c141f94e4c5a",
-        tag: "Docker",
-        datePublished: "2023-05-15",
-        image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b5UBEuktS0lhRoit39GtGw.jpeg"
-    },
+    // {
+    //     id: "blog1",
+    //     title: "Using postgreSQL in Docker Container",
+    //     description: "A beginner's guide to using postgreSQL in a Docker container",
+    //     link: "https://medium.com/@basit26374/how-to-run-postgresql-in-docker-container-with-volume-bound-c141f94e4c5a",
+    //     tag: "Docker",
+    //     datePublished: "2023-05-15",
+    //     imageLink: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b5UBEuktS0lhRoit39GtGw.jpeg"
+    // },
    
     {
         id: "blog2",
@@ -113,8 +113,17 @@ export const blogContent = [
         description: "A beginner's guide to essential Linux commands",
         link: "https://medium.com/@pranjalll/top-8-linux-commands-everyone-should-know-656399eb7d3f",
         tag: "Web2",
-        datePublished: "2023-07-10",
-        image: "https://images.ctfassets.net/lzny33ho1g45/UWH9IWnkrHogTs50L5FM8/85b518e7aedd196d2b6b541d0f90c7fb/Linux.jpg?w=1520&fm=jpg&q=31&fit=thumb&h=760"
+        datePublished: "2025-06-18",
+        imageLink: "/blogs/blog2.jpg"
+    },
+    {
+        id: "blog3",
+        title: "Unlocking Web3: A Smart Guide to Crypto Wallets",
+        description: "A beginner's guide to understanding and using crypto wallets",
+        link: "https://medium.com/@pranjalll/unlocking-web3-a-smart-guide-to-crypto-wallets-13cc46f8a55f",
+        tag: "Web3",
+        datePublished: "2025-07-02",
+        imageLink: "/blogs/blog3.jpeg"
     },
 ];
 
