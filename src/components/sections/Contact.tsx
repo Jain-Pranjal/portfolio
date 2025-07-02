@@ -37,6 +37,7 @@ export function ContactSection() {
         setSubmitMessage(result.message || "Sorry, there was an error sending your message. Please try again.");
       }
     } catch (error) {
+      console.error("Error sending email:", error);
       setSubmitMessage("Sorry, there was an error sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);

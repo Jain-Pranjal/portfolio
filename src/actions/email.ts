@@ -3,12 +3,6 @@
 import { resend } from "@/lib/resend";
 import { EmailTemplate } from '@/components/email-template';
 
-interface emailProps{
-    name: string;
-    email: string;
-    message: string;
-}
-
 
 export async function send(formData: FormData) {
     const name = formData.get('name') as string;
@@ -21,7 +15,7 @@ export async function send(formData: FormData) {
     }
 
     try {
-        const { data } = await resend.emails.send({
+            await resend.emails.send({
             // need to change the domain to send from the user email only 
             from: 'onboarding@resend.dev',
             to: ['pranjalworkon@gmail.com'],
@@ -33,6 +27,7 @@ export async function send(formData: FormData) {
         // Return only serializable data
         return { success: true, message: 'Email sent successfully!' };
     } catch (error) {
+        console.error("Error sending email:", error);
         return { success: false, message: 'Failed to send email. Please try again.' };
     }
 }

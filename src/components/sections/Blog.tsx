@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {blogContent} from "@/content/sectionContent";
-
+import Image from 'next/image';
 
 // Get unique tags for filter
 const uniqueTags = ["all", ...new Set(blogContent.map(blog => blog.tag))];
@@ -48,11 +48,13 @@ export function BlogSection() {
                         >
                             <div className="flex flex-col space-y-4">
                                 {blog.image && (
-                                    <img 
-                                        src={blog.image} 
-                                        alt={blog.title} 
+                                    <Image
+                                        src={blog.image}
+                                        alt={blog.title}
                                         className="w-full h-40 object-cover rounded-md select-none"
                                         draggable="false"
+                                        width={640}
+                                        height={160}
                                     />
                                 )}
                                 <div>
