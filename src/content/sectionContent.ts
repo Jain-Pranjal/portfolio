@@ -118,3 +118,26 @@ export const blogContent = [
     },
 ];
 
+
+export const contactDetails = [
+  {
+    platform: "GitHub",
+    link: "https://github.com/Jain-Pranjal",
+    icon: "github"
+  },
+  {
+    platform: "LinkedIn",
+    link: "https://www.linkedin.com/in/pranjalll/",
+    icon: "linkedin"
+  },
+  {
+    platform: "Twitter",
+    link: "https://x.com/PranjalJain03",
+    icon: "twitter"
+  },
+  {
+    platform: "Instagram",
+    link: "https://www.instagram.com/pranjalll_jain/",
+    icon: "instagram"
+  }
+]

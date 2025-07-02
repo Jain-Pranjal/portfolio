@@ -1,22 +1,46 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import Image from "next/image";
+import { send } from "@/actions/email";
+import Link from "next/link";
+import { contactDetails } from "@/content/sectionContent";
+import { contactForm } from "@/types/section";
+
 export function ContactSection() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<contactForm>({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Thanks for your message, ${formData.name}! Your message is sent.`);
-    setFormData({ name: "", email: "", message: "" });
+
+
+  // Handle form submission with server action
+  const handleSubmit = async (formData: FormData) => {
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const result = await send(formData);
+      
+      if (result.success) {
+        setSubmitMessage("Thanks for your message! I'll get back to you soon.");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitMessage(result.message || "Sorry, there was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      setSubmitMessage("Sorry, there was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,35 +84,55 @@ export function ContactSection() {
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-notes-text mb-4">Follow Me</h2>
             <div className="flex flex-wrap gap-4">
-              <a href="https://github.com/Jain-Pranjal" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center hover:bg-notes-sidebarActive">
-                <Github className="h-5 w-5 text-notes-text" />
-              </a>
-              <a href="https://www.linkedin.com/in/pranjalll/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center hover:bg-notes-sidebarActive">
-                <Linkedin className="h-5 w-5 text-notes-text" />
-              </a>
-              <a href="https://x.com/PranjalJain03" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center hover:bg-notes-sidebarActive">
-                <Twitter className="h-5 w-5 text-notes-text" />
-              </a>
-              <a href="https://www.instagram.com/pranjalll_jain/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center hover:bg-notes-sidebarActive">
-                <Instagram className="h-5 w-5 text-notes-text" />
-              </a>
+              
+            {contactDetails.map((contact, index) => {
+              const IconComponent = 
+                contact.icon === "github" ? Github :
+                contact.icon === "linkedin" ? Linkedin :
+                contact.icon === "twitter" ? Twitter :
+                contact.icon === "instagram" ? Instagram : Mail; // Default to Mail if not found
+                  return (
+                  <Link
+                    key={index}
+                    href={contact.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-notes-sidebarHover flex items-center justify-center hover:bg-notes-sidebarActive"
+                    aria-label={`Visit my ${contact.platform}`}
+                  >
+                    <IconComponent className="h-5 w-5 text-notes-text" />
+                  </Link>
+              );
+            })}
             </div>
           </div>
 
           <Image
-          src="/signature.png"
-          alt="Signature"
-          width={256}
-          height={256}
-          className="w-52  lg:w-72 object-contain"
-          draggable={false}
-        />
+            src="/signature.png"
+            alt="Signature"
+            width={256}
+            height={256}
+            className="w-52 lg:w-72 object-contain"
+            draggable={false}
+          />
         </div>
 
         {/* Contact Form */}
         <div>
           <h2 className="text-xl font-semibold text-notes-text mb-4">Send Me a Message</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          
+          {/* Display submit message */}
+          {submitMessage && (
+            <div className={`mb-4 p-3 rounded-md ${
+              submitMessage.includes('Thanks') 
+                ? 'bg-green-100 text-green-800 border border-green-200' 
+                : 'bg-red-100 text-red-800 border border-red-200'
+            }`}>
+              {submitMessage}
+            </div>
+          )}
+
+          <form action={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-notes-text mb-1">Name</label>
               <input
@@ -98,7 +142,8 @@ export function ContactSection() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent"
+                disabled={isSubmitting}
+                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent disabled:opacity-50"
               />
             </div>
 
@@ -111,7 +156,8 @@ export function ContactSection() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent"
+                disabled={isSubmitting}
+                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent disabled:opacity-50"
               />
             </div>
 
@@ -124,16 +170,18 @@ export function ContactSection() {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent resize-none"
+                disabled={isSubmitting}
+                className="w-full bg-notes-sidebarHover border border-notes-border rounded-md px-4 py-2 text-notes-text focus:outline-none focus:ring-2 focus:ring-notes-accent resize-none disabled:opacity-50"
               />
             </div>
 
             <button
               type="submit"
-              className="flex items-center justify-center w-full bg-notes-accent text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
+              disabled={isSubmitting}
+              className="flex items-center justify-center w-full bg-notes-accent text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-4 w-4 mr-2" />
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

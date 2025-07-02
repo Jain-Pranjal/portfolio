@@ -8,3 +8,10 @@ export type SectionType =
   | "blog";
 
 export type ActiveTarget = SectionType | string;
+
+
+export type contactForm = {
+  name: string;
+  email: string;
+  message: string;
+}
