@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 export function AboutSection() {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-6 max-w-4xl px-4 py-10 gap-10">
@@ -14,13 +15,25 @@ export function AboutSection() {
           </p>
 
          <p className="text-notes-text mt-4">
-  I specialize in <strong>full-stack development</strong>, with strong expertise in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and modern <strong>CSS frameworks</strong> like Tailwind CSS on the front end. On the back end, I work with <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Django</strong> to build robust, scalable APIs and server-side logic. I focus on writing <strong>clean, maintainable, and scalable code</strong> that supports long-term growth and flexibility.
+  I specialize in <strong>full-stack development</strong>, with strong expertise in <strong>React JS</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and modern <strong>CSS frameworks</strong> like Tailwind CSS on the front end. On the back end, I work with <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Django</strong> to build robust, scalable APIs and server-side logic. I focus on writing <strong>clean, maintainable, and scalable code</strong> that supports long-term growth and flexibility.
 </p>
 
 <p className="text-notes-text mt-4">
-  When I&apos;m not coding, I enjoy <strong>exploring new technologies</strong>, <strong>contributing to open-source projects</strong>, and listening to music. I&apos;m always eager to tackle <strong>new challenges</strong> and collaborate with <strong>passionate teams</strong> to build <strong>innovative, user-centric solutions</strong>.
+  When I&apos;m not coding, I enjoy <strong>exploring new technologies</strong>, <strong>writing the tech blogs</strong>, and listening to music. I&apos;m always eager to tackle <strong>new challenges</strong> and collaborate with <strong>passionate teams</strong> to build <strong>innovative, user-centric solutions</strong>.
 </p>
 
+        </div>
+
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold text-notes-text mb-4">My Resume</h2>
+          <Link
+            href="https://drive.google.com/file/d/1seyuBYreOjME2rSqyjfTonLHxc19j8Pl/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-l-4 border-notes-accent pl-4 italic text-notes-text hover:text-notes-accent transition-colors duration-200 block"
+          >
+            &quot;View my resume&quot;
+          </Link>
         </div>
 
         <div className="mt-8">

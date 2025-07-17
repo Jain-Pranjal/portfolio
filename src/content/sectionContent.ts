@@ -3,7 +3,7 @@ export const educationContent = [
         degree: "Bachelor of Technology in Computer Science and Engineering",
         institution: "Bharati Vidyapeeth College of Engineering, Delhi",
         year: "2021-2025",
-        CGPA: "8.87/10",
+        CGPA: "9.01/10",
         description: "Focus on software development and database management. Participated in multiple hackathons and coding competitions."
       },
       {
