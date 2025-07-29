@@ -24,6 +24,11 @@ export const educationContent = [
 
 export const projectsContent = [
   {
+    title: "Meet-AI",
+    description: "Meet-AI is a SAAS application that helps you to schedule your meetings with AI. It allows you to create AI agents that will join the meeting and you can interact with them by asking questions inside the meet only. Powered by OpenAI and Stream along with Inngest.",
+    link: "https://github.com/Jain-Pranjal/meetai"
+  },
+  {
     title: "Mona - AI extension",
     description: "Mona is an AI extension in VS code that helps you to write code faster and better. It gives you the suggestion based on the code and prompt you write.",
     link: "https://github.com/Jain-Pranjal/Mona"
