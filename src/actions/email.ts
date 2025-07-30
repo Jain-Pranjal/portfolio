@@ -15,9 +15,9 @@ export async function send(formData: FormData) {
     }
 
     try {
-            await resend.emails.send({
-            // need to change the domain to send from the user email only 
-            from: 'onboarding@resend.dev',
+        await resend.emails.send({
+            // need to change the domain to send from the user email only
+            from: email,
             to: ['pranjalworkon@gmail.com'],
             subject: 'Hey you got a new query from your portfolio',
             react: EmailTemplate({ name, email, message }),
