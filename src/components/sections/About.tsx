@@ -27,7 +27,7 @@ export function AboutSection() {
         <div className="mt-8">
           <h2 className="text-xl font-semibold text-notes-text mb-4">My Resume</h2>
           <Link
-            href="https://drive.google.com/file/d/1seyuBYreOjME2rSqyjfTonLHxc19j8Pl/view"
+            href="https://dub.sh/pranjal-resume"
             target="_blank"
             rel="noopener noreferrer"
             className="border-l-4 border-notes-accent pl-4 italic text-notes-text hover:text-notes-accent transition-colors duration-200 block"
