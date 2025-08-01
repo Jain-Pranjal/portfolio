@@ -1,7 +1,7 @@
 "use server";
 
 import { resend } from "@/lib/resend";
-import { EmailTemplate } from '@/components/email-template';
+import  EmailTemplate  from '@/components/email-template';
 
 
 export async function send(formData: FormData) {
@@ -17,8 +17,8 @@ export async function send(formData: FormData) {
     try {
             await resend.emails.send({
             // need to change the domain to send from the user email only 
-            from: 'onboarding@resend.dev',
-            to: ['pranjalworkon@gmail.com'],
+            from: `${process.env.EMAIL_SENDER_NAME} <${process.env.EMAIL_SENDER_ADDRESS}>`,
+            to: `${process.env.EMAIL_RECIEVER_ADDRESS}`,
             subject: 'Hey you got a new query from your portfolio',
             react: EmailTemplate({ name, email, message }),
             replyTo: email, // This allows you to reply directly to the sender
