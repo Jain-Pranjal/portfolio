@@ -60,7 +60,7 @@ export function ContactSection() {
               <Mail className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Email</h3>
-                <p className="text-notes-muted break-all">pranjalworkon@gmail.com</p>
+                <p className="text-notes-text break-all opacity-75">pranjalworkon@gmail.com</p>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ export function ContactSection() {
               <Phone className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Phone</h3>
-                <p className="text-notes-muted">+91-9999284260</p>
+                <p className="text-notes-text break-all opacity-75">+91-9999284260</p>
               </div>
             </div>
 
@@ -76,14 +76,14 @@ export function ContactSection() {
               <MapPin className="h-5 w-5 text-notes-accent mr-3 mt-0.5" />
               <div>
                 <h3 className="text-notes-text font-medium">Location</h3>
-                <p className="text-notes-muted">New Delhi, India</p>
+                <p className="text-notes-text break-all opacity-75">New Delhi, India</p>
               </div>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-notes-text mb-4">Follow Me</h2>
+            <h2 className="text-xl font-semibold text-notes-text mb-4 mt-10">Follow Me</h2>
             <div className="flex flex-wrap gap-4">
               
             {contactDetails.map((contact, index) => {
@@ -140,6 +140,7 @@ export function ContactSection() {
                 type="text"
                 id="name"
                 name="name"
+                // placeholder="John Doe"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -154,6 +155,7 @@ export function ContactSection() {
                 type="email"
                 id="email"
                 name="email"
+                // placeholder="pranjal@example.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -167,6 +169,7 @@ export function ContactSection() {
               <textarea
                 id="message"
                 name="message"
+                placeholder="Hello Pranjal, I would like to..."
                 value={formData.message}
                 onChange={handleChange}
                 required
