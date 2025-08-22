@@ -69,7 +69,7 @@ export const experienceContent = [
   {
     title: "Full Stack Web3 Developer",
     company: "Zoth",
-    period: "Oct 2024 - Present",
+    period: "Nov 2024 - July 2025",
     responsibilities: [
       "Maintained and enhanced Zoth's front-end codebase, delivering seamless user experiences across multiple platforms",
       "Designed, developed, and deployed the Zoth Airdrop Checker",
