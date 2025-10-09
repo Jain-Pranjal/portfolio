@@ -135,6 +135,15 @@ export const blogContent = [
         datePublished: "2025-07-02",
         imageLink: "/blogs/blog3.jpeg"
     },
+    {
+        id: "blog4",
+        title: "Understanding JavaScript Package Managers: npm, Yarn, pnpm, and Bun",
+        description: "A beginner's guide to understanding JavaScript package managers",
+        link: "https://medium.com/@pranjalll/understanding-javascript-package-managers-npm-yarn-pnpm-and-bun-18c1279a8c88",
+        tag: "Web2",
+        datePublished: "2025-10-09",
+        imageLink: "/blogs/blog4.jpg"
+    },
 ];
 
 
