@@ -144,6 +144,15 @@ export const blogContent = [
         datePublished: "2025-10-09",
         imageLink: "/blogs/blog4.jpg"
     },
+    {
+        id: "blog5",
+        title: "How I Use Pydantic to Add Real Type Safety to My Python Code",
+        description: "A guide to understand Pydantic and its benefits for type safety in Python",
+        link: "https://medium.com/@pranjalll/how-i-use-pydantic-to-add-real-type-safety-to-my-python-code-691837d8e68b",
+        tag: "Web2",
+        datePublished: "2025-10-14",
+        imageLink: "/blogs/blog5.jpg"
+    },
 ];
 
 
