@@ -153,6 +153,15 @@ export const blogContent = [
         datePublished: "2025-10-14",
         imageLink: "/blogs/blog5.jpg"
     },
+    {
+        id: "blog6",
+        title: "Understanding Apache Kafka: The Real Backbone of Event-Driven Systems",
+        description: "A guide to understanding Apache Kafka and its role in event-driven architectures",
+        link: "https://medium.com/@pranjalll/understanding-apache-kafka-the-real-backbone-of-event-driven-systems-6aea86669335",
+        tag: "Web2",
+        datePublished: "2025-10-25",
+        imageLink: "/blogs/blog6.jpg"
+    },
 ];
 
 
