@@ -1,5 +1,6 @@
-import { SiReact, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiGraphql, SiGit, SiDocker, SiFigma, SiGooglechrome, SiC, SiCplusplus, SiPython, SiNextdotjs, SiPostgresql, SiPostman, SiJira, SiSupabase, SiPrisma, SiDjango, SiGithub} from "react-icons/si";
+import { SiReact, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiGraphql, SiGit, SiDocker, SiFigma, SiGooglechrome, SiC, SiCplusplus, SiPython, SiNextdotjs, SiPostgresql, SiPostman, SiJira, SiSupabase, SiPrisma, SiDjango, SiGithub,SiFastapi,SiApachekafka, SiDrizzle,SiKubernetes,SiOpenai,SiHuggingface} from "react-icons/si";
 import { FaAws } from "react-icons/fa";
+import { DiRedis } from "react-icons/di";
 
 
 export function SkillsSection() {
@@ -32,6 +33,7 @@ export function SkillsSection() {
         { name: "Django", icon: SiDjango },
         { name: "REST APIs", icon: SiHtml5 },
         { name: "GraphQL", icon: SiGraphql },
+        { name: "FastAPI", icon: SiFastapi },
       ],
     },
     {
@@ -42,6 +44,16 @@ export function SkillsSection() {
         { name: "MySQL", icon: SiMysql },
         { name: "Supabase", icon: SiSupabase },
         { name: "Prisma", icon: SiPrisma },
+        { name: "Drizzle", icon: SiDrizzle },
+        { name: "Redis", icon: DiRedis },
+        
+      ],
+    },
+    {
+      category: "AI development",
+      skills: [
+        { name: "OpenAI", icon: SiOpenai },
+        { name: "Hugging Face", icon: SiHuggingface },
       ],
     },
     {
@@ -55,6 +67,8 @@ export function SkillsSection() {
         { name: "Jira", icon: SiJira },
         { name: "Performance", icon: SiGooglechrome },
         { name: "AWS", icon: FaAws },
+        { name: "Apache Kafka", icon: SiApachekafka },
+        { name: "Kubernetes", icon: SiKubernetes },
       ],
     },
   ];
