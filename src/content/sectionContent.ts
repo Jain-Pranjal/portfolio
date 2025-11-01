@@ -162,6 +162,15 @@ export const blogContent = [
         datePublished: "2025-10-25",
         imageLink: "/blogs/blog6.jpg"
     },
+    {
+        id: "blog7",
+        title: "System Design Basics: The Core Every Developer Should Know",
+        description: "An introduction to the fundamental concepts of system design for developers",
+        link: "https://medium.com/@pranjalll/system-design-basics-the-core-every-developer-should-know-80028816fdd8",
+        tag: "Web2",
+        datePublished: "2025-11-01",
+        imageLink: "/blogs/blog7.jpg"
+    },
 ];
 
 
