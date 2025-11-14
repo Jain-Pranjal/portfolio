@@ -171,6 +171,15 @@ export const blogContent = [
         datePublished: "2025-11-01",
         imageLink: "/blogs/blog7.jpg"
     },
+    {
+        id: "blog8",
+        title: "Oracle Problem in Blockchain",
+        description: "An in-depth look at the Oracle Problem in blockchain technology",
+        link: "https://medium.com/@pranjalll/oracle-problem-in-blockchain-0a8c4654d11b",
+        tag: "Web3",
+        datePublished: "2025-11-14",
+        imageLink: "/blogs/blog8.jpg"
+    },
 ];
 
 
