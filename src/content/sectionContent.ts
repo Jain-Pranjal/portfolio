@@ -24,6 +24,11 @@ export const educationContent = [
 
 export const projectsContent = [
   {
+    title: "Runway",
+    description: "A modern fashion website that showcase the trendy images, street style galleries, built with NextJS and TailwindCSS.",
+    link: "https://github.com/Jain-Pranjal/runway"
+  },
+  {
     title: "Career Counseling ChatBot",
     description: "An AI-powered chatbot designed to assist users in making informed career decisions. It provides personalized career advice, answers questions about various professions, and offers resources for skill development.",
     link: "https://github.com/Jain-Pranjal/Oration-chatbot"
