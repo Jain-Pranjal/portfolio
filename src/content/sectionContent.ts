@@ -24,6 +24,11 @@ export const educationContent = [
 
 export const projectsContent = [
   {
+    title: "Web3 SAAS UI",
+    description: "A comprehensive Web3 SAAS UI template built with NextJS and TailwindCSS, designed to accelerate the development of Web3 applications with pre-built components and layouts. Built to be fully responsive and customizable to fit various project needs.",
+    link: "https://github.com/Jain-Pranjal/Web3-UI"
+  },
+  {
     title: "Runway",
     description: "A modern fashion website that showcase the trendy images, street style galleries, built with NextJS and TailwindCSS.",
     link: "https://github.com/Jain-Pranjal/runway"
