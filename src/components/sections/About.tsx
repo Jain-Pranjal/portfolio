@@ -81,6 +81,22 @@ export function AboutSection() {
             &quot;There&apos;s no place like 127.0.0.1.&quot;
           </blockquote>
         </div>
+
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold text-notes-text mb-4">
+            Schedule a Meeting
+          </h2>
+          <blockquote className="border-l-4 border-notes-accent pl-4 italic text-notes-text">
+            &quot;
+            <Link
+              href="https://calendly.com/pranjal/connect-with-pranjal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-notes-accent transition-colors duration-200"
+            >Book a slot</Link>{" "}
+            to discuss opportunities.&quot;
+          </blockquote>
+        </div>
       </div>
 
       {/* Profile Image with Speaker Button Overlay */}
