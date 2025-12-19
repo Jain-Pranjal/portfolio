@@ -1,23 +1,19 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import './globals.css'
 
+import type { Metadata } from 'next'
 
+import { constructMetadata } from '@/lib/utils'
 
-export const metadata: Metadata = {
-  title: "Pranjal Jain - Portfolio",
-  description: "Pranjal Jain Portfolio",
-};
+export const metadata: Metadata = constructMetadata()
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>{children}</body>
+        </html>
+    )
 }
