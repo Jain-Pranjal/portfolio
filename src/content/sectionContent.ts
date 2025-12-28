@@ -216,6 +216,16 @@ export const blogContent = [
         datePublished: '2025-11-14',
         imageLink: '/blogs/blog8.jpg',
     },
+    {
+        id: 'blog9',
+        title: 'Rate Limiting Algorithms',
+        description:
+            'A comprehensive overview of various rate limiting algorithms used in web development',
+        link: 'https://medium.com/@pranjalll/rate-limiting-algorithms-e678ef82e765',
+        tag: 'Web2',
+        datePublished: '2025-12-28',
+        imageLink: '/blogs/blog9.jpeg',
+    },
 ]
 
 export const contactDetails = [
