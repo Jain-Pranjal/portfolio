@@ -111,6 +111,7 @@ export const experienceContent = [
             'Implemented Two-Factor Authentication (2FA) using authenticator apps to enhance application security.',
             'Built RESTful APIs using Django and DRF with request rate limiting for reliability and security.',
         ],
+        companyLink: 'https://twopointone.com/',
     },
     {
         title: 'Full Stack Web3 Developer',
@@ -124,6 +125,7 @@ export const experienceContent = [
             'Implemented 700+ automation test flows using Jest and Playwright, enhancing testing efficiency and reducing manual effort',
             'Resolved the issue of the SonarQube report',
         ],
+        companyLink: 'https://zoth.io/',
     },
     {
         title: 'Full Stack Developer',
@@ -134,6 +136,7 @@ export const experienceContent = [
             'Implemented a role-based authentication system, enabling controls and permissions for various users',
             'Utilised the NextJS and ReactJS for frontend and backend along with MongoDB as database',
         ],
+        companyLink: 'https://www.augsta.com/',
     },
     {
         title: 'Data Science Intern',
@@ -144,6 +147,7 @@ export const experienceContent = [
             'Identified and extracted key features like sender reputation and message content to improve classification accuracy',
             'Utilized Python and Streamlit for model development and Jupyter Notebook for data analysis and visualization',
         ],
+        companyLink: 'https://twopointone.com/',
     },
 ]
 
