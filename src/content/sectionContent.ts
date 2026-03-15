@@ -102,6 +102,17 @@ export const projectsContent = [
 
 export const experienceContent = [
     {
+        title: 'Software Developer Intern',
+        company: 'Two Point One Inc.',
+        period: 'Aug 2025 - Jan 2026',
+        responsibilities: [
+            'Completed comprehensive training in emerging technologies and tools utilized by the company, including Django and Django DRF.',
+            'Integrated Slack and email notification systems to streamline internal and user communication workflows.',
+            'Implemented Two-Factor Authentication (2FA) using authenticator apps to enhance application security.',
+            'Built RESTful APIs using Django and DRF with request rate limiting for reliability and security.',
+        ],
+    },
+    {
         title: 'Full Stack Web3 Developer',
         company: 'Zoth',
         period: 'Nov 2024 - July 2025',
