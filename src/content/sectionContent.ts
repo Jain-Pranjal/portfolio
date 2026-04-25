@@ -102,6 +102,16 @@ export const projectsContent = [
 
 export const experienceContent = [
     {
+        title: 'AI Developer',
+        company: 'Neotas Ltd.',
+        period: 'Jan 2026 - present',
+        responsibilities: [
+            'Developed AI-driven automation for social media screening across platforms including TikTok, X (Twitter), and Instagram.',
+            'Built scalable AI workflows to generate screening reports for both single and multiple entities.',
+        ],
+        companyLink: 'https://www.neotas.com/',
+    },
+    {
         title: 'Software Developer Intern',
         company: 'Two Point One Inc.',
         period: 'Aug 2025 - Jan 2026',
