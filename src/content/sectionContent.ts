@@ -106,8 +106,11 @@ export const experienceContent = [
         company: 'Neotas Ltd.',
         period: 'Jan 2026 - present',
         responsibilities: [
-            'Developed AI-driven automation for social media screening across platforms including TikTok, X (Twitter), and Instagram.',
+            'Developed AI-driven automation for social media screening across platforms including TikTok, X (Twitter), Facebook and Instagram',
             'Built scalable AI workflows to generate screening reports for both single and multiple entities.',
+            'Architected scalable AI workflows for single and multi-entity screening, optimizing token usage and cost.',
+            'Developed 5+ AI automation pipelines using n8n and Browserbase for social media analysis, reducing manual review time by 60%.',
+            'Built n8n workflows to integrate and synchronize multiple platforms for seamless automation.',
         ],
         companyLink: 'https://www.neotas.com/',
     },
