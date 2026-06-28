@@ -1,0 +1,56 @@
+name: Greetings
+
+on:
+  pull_request_target:
+    types: [opened]
+  issues:
+    types: [opened]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Welcome First-Time Contributors
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          issue-message: |
+            👋 Hello and welcome!
+
+            Thank you for opening your first issue in this repository. We really appreciate you taking the time to help improve the project.
+
+            Before we review your issue, please make sure you've included:
+            - 📝 A clear description of the problem
+            - 🔄 Steps to reproduce (if applicable)
+            - 💡 Expected vs. actual behavior
+            - 📷 Screenshots or logs (if helpful)
+
+            We'll review it as soon as possible.
+
+            Thanks for contributing! 🚀
+
+          pr-message: |
+            🎉 Welcome and thank you for your first Pull Request!
+
+            We truly appreciate your contribution to this project.
+
+            Before your PR is reviewed, please ensure:
+            - ✅ Your code builds successfully
+            - 🧪 All tests are passing
+            - 📚 Documentation has been updated (if needed)
+            - ✨ Your code follows the project's coding standards
+
+            Our maintainers will review your PR as soon as possible.
+
+            Thanks again for contributing, and welcome aboard! 🚀
+
+
+
+
+# we dont need to create the token, this token will automatically be created per wrokflow execution and later on deleted. This token is basically required to perform the action like write operation on issues and pr rasied .These permissions tell GitHub: "Allow this workflow to write comments on issues and pull requests."
