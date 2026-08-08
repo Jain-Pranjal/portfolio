@@ -16,88 +16,91 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get PR author email
-        id: author-email
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const pr = context.payload.pull_request;
-            const username = pr.user.login;
-
-            try {
-              const response = await github.rest.users.getByUsername({ username });
-              const email = response.data.email || '';
-              core.setOutput('email', email);
-            } catch (error) {
-              core.setOutput('email', '');
-              core.warning(`Could not fetch email for ${username}: ${error.message}`);
-            }
-
       - name: Greet the contributor
         uses: actions/github-script@v7
         with:
           script: |
             const pr = context.payload.pull_request;
-            const message = `Hello @${pr.user.login}! Your pull request "${pr.title}" has been opened and is waiting for review. It has not been merged yet.`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: pr.number,
-              body: message,
+              body: `👋 Hello @${pr.user.login}!
+
+            Your pull request **"${pr.title}"** has been opened successfully and is now waiting for review.
+
+            Thank you for your contribution! 🚀`
             });
 
-      - name: Send email notification
-        if: env.RESEND_API_KEY != ''
-        continue-on-error: true
+      - name: Send Email Notification
+        if: ${{ secrets.RESEND_API_KEY != '' }}
+        uses: actions/github-script@v7
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           FROM_EMAIL: ${{ secrets.NOTIFICATION_FROM_EMAIL }}
           TO_EMAIL: ${{ secrets.NOTIFICATION_TO_EMAIL }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-        run: |
-          if [ -z "$RESEND_API_KEY" ] || [ -z "$FROM_EMAIL" ] || [ -z "$TO_EMAIL" ]; then
-            echo "❌ Missing required secrets."
-            exit 0
-          fi
+        with:
+          script: |
+            const pr = context.payload.pull_request;
 
-          echo "📧 Sending notification email..."
+            if (!process.env.RESEND_API_KEY ||
+                !process.env.FROM_EMAIL ||
+                !process.env.TO_EMAIL) {
 
-          RESPONSE=$(curl --silent --show-error --fail \
-            -X POST "https://api.resend.com/emails" \
-            -H "Authorization: Bearer $RESEND_API_KEY" \
-            -H "Content-Type: application/json" \
-            --data @- <<EOF
-          {
-            "from": "$FROM_EMAIL",
-            "to": ["$TO_EMAIL"],
-            "subject": "🚀 New Pull Request Opened",
-            "html": "
-              <h2>New Pull Request Opened</h2>
+              core.warning("Missing Resend configuration.");
+              return;
+            }
 
-              <p><strong>Author:</strong> @$PR_AUTHOR</p>
+            const response = await fetch("https://api.resend.com/emails", {
+              method: "POST",
+              headers: {
+                "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                from: process.env.FROM_EMAIL,
+                to: [process.env.TO_EMAIL],
+                subject: "🚀 New Pull Request Opened",
+                html: `
+                  <h2>🚀 New Pull Request Opened</h2>
 
-              <p>
-                A new pull request has been opened.
-              </p>
+                  <p><strong>Author:</strong> @${pr.user.login}</p>
 
-              <p>
-                <strong>Title:</strong> $PR_TITLE
-              </p>
+                  <p>
+                    A new pull request has been opened and is waiting for review.
+                  </p>
 
-              <p>
-                <a href=\"$PR_URL\">View Pull Request</a>
-              </p>
+                  <p>
+                    <strong>Title:</strong> ${pr.title}
+                  </p>
 
-              <hr>
+                  <p>
+                    <a href="${pr.html_url}">
+                      View Pull Request
+                    </a>
+                  </p>
 
-              <p>This email was sent automatically by your GitHub Actions workflow.</p>
-            "
-          }
-          EOF
-          )
+                  <hr>
 
-          echo "✅ Email sent successfully!"
-          echo "$RESPONSE"
+                  <p>
+                    Repository:
+                    <strong>${context.repo.owner}/${context.repo.repo}</strong>
+                  </p>
+
+                  <p>
+                    This email was sent automatically by GitHub Actions.
+                  </p>
+                `
+              })
+            });
+
+            if (!response.ok) {
+              const error = await response.text();
+              core.setFailed(`Resend API failed: ${error}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Email sent successfully.");
+            console.log(result);
