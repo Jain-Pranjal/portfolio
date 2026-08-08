@@ -1,0 +1,103 @@
+name: PR Notification
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get PR author email
+        id: author-email
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const username = pr.user.login;
+
+            try {
+              const response = await github.rest.users.getByUsername({ username });
+              const email = response.data.email || '';
+              core.setOutput('email', email);
+            } catch (error) {
+              core.setOutput('email', '');
+              core.warning(`Could not fetch email for ${username}: ${error.message}`);
+            }
+
+      - name: Greet the contributor
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const message = `Hello @${pr.user.login}! Your pull request "${pr.title}" has been opened and is waiting for review. It has not been merged yet.`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: message,
+            });
+
+      - name: Send email notification
+        if: env.RESEND_API_KEY != ''
+        continue-on-error: true
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          FROM_EMAIL: ${{ secrets.NOTIFICATION_FROM_EMAIL }}
+          TO_EMAIL: ${{ secrets.NOTIFICATION_TO_EMAIL }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          if [ -z "$RESEND_API_KEY" ] || [ -z "$FROM_EMAIL" ] || [ -z "$TO_EMAIL" ]; then
+            echo "❌ Missing required secrets."
+            exit 0
+          fi
+
+          echo "📧 Sending notification email..."
+
+          RESPONSE=$(curl --silent --show-error --fail \
+            -X POST "https://api.resend.com/emails" \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            --data @- <<EOF
+          {
+            "from": "$FROM_EMAIL",
+            "to": ["$TO_EMAIL"],
+            "subject": "🚀 New Pull Request Opened",
+            "html": "
+              <h2>New Pull Request Opened</h2>
+
+              <p><strong>Author:</strong> @$PR_AUTHOR</p>
+
+              <p>
+                A new pull request has been opened.
+              </p>
+
+              <p>
+                <strong>Title:</strong> $PR_TITLE
+              </p>
+
+              <p>
+                <a href=\"$PR_URL\">View Pull Request</a>
+              </p>
+
+              <hr>
+
+              <p>This email was sent automatically by your GitHub Actions workflow.</p>
+            "
+          }
+          EOF
+          )
+
+          echo "✅ Email sent successfully!"
+          echo "$RESPONSE"
