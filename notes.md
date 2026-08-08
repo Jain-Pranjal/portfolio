@@ -43,14 +43,15 @@ also add by
 
 ## Tags
 
-Git tags basically helps to locate the particualr commit that we have released or deployed. It is a reference to a specific commit in the git history.
+Git tags help locate a particular commit that we have released or deployed. It is a reference to a specific commit in the git history.
 and we use the Annotated tag (recommended)
 
 Stores:
 
-author
-date
+tagger identity
+tagger date
 message
+referenced object
 
 ```bash
 git tag -a v1.0.0 -m "First Production Release"
@@ -58,4 +59,4 @@ git tag -a v1.0.0 -m "First Production Release"
 git push origin v1.0.0
 ```
 
-and we create a tag after the PR has been merged to the main branch and we have deployed the code to production.
+and we create a tag after the PR has been merged to the master branch and we have deployed the code to production.
