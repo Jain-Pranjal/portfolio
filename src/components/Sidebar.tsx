@@ -12,7 +12,7 @@ import {
     Trash,
     User,
 } from 'lucide-react'
-import { useEffect,useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useSound from 'use-sound'
 
 import { cn } from '@/lib/utils'
@@ -85,7 +85,7 @@ export function NoteSidebar({
     notes,
     onDeleteNote,
 }: SidebarProps) {
-    const [playClick] = useSound('/click-audio.mp3', { volume: 0.7 })
+    const [playClick] = useSound('/click-audio.mp3', { volume: 1 })
     const [sidebarWidth, setSidebarWidth] = useState<number>(300)
     const isResizing = useRef(false)
 

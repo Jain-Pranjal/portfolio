@@ -1,10 +1,11 @@
+import { AiOutlineOpenAI } from 'react-icons/ai'
 import { DiRedis } from 'react-icons/di'
 import { FaAws } from 'react-icons/fa'
 import {
     SiApachekafka,
     SiC,
     SiCplusplus,
-    SiCss3,
+    SiCss,
     SiDjango,
     SiDocker,
     SiDrizzle,
@@ -25,7 +26,6 @@ import {
     SiN8N,
     SiNextdotjs,
     SiNodedotjs,
-    SiOpenai,
     SiPostgresql,
     SiPostman,
     SiPrisma,
@@ -54,7 +54,7 @@ export function SkillsSection() {
                 { name: 'React', icon: SiReact },
                 { name: 'Next.js', icon: SiNextdotjs },
                 { name: 'HTML5', icon: SiHtml5 },
-                { name: 'CSS3', icon: SiCss3 },
+                { name: 'CSS3', icon: SiCss },
                 { name: 'Tailwind CSS', icon: SiTailwindcss },
             ],
         },
@@ -84,7 +84,7 @@ export function SkillsSection() {
         {
             category: 'AI development',
             skills: [
-                { name: 'OpenAI', icon: SiOpenai },
+                { name: 'OpenAI', icon: AiOutlineOpenAI },
                 { name: 'Hugging Face', icon: SiHuggingface },
                 { name: 'n8n', icon: SiN8N },
             ],
