@@ -40,3 +40,23 @@ add the same prettier config annd ignore (COPY that)
 also add by
 --> pnpm add -D prettier prettier-plugin-tailwindcss
 ```
+
+## Tags
+
+Git tags help locate a particular commit that we have released or deployed. It is a reference to a specific commit in the git history.
+and we use the Annotated tag (recommended)
+
+Stores:
+
+tagger identity
+tagger date
+message
+referenced object
+
+```bash
+git tag -a v1.0.0 -m "First Production Release"
+
+git push origin v1.0.0
+```
+
+and we create a tag after the PR has been merged to the master branch and we have deployed the code to production.
